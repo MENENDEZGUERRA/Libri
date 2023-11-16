@@ -1,5 +1,6 @@
 package com.example.libriv2.ui.Screens.Login
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -14,11 +15,13 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.libriv2.ui.Navigation.TabScreens
@@ -28,20 +31,36 @@ import com.example.libriv2.ui.Navigation.TabScreens
 fun LibriLoginScreen(navController: NavController, viewModel: LoginScreenViewModel = viewModel()) {
     val showLoginForm = rememberSaveable { mutableStateOf(true) }
 
-    Surface(modifier = Modifier.fillMaxSize()) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black)
+    ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .align(Alignment.Center)
+                .fillMaxWidth()
+                .padding(16.dp)
         ) {
             if (showLoginForm.value) {
-                Text(text = "Log In")
+                Text(
+                    text = "Log In",
+                    fontSize = 24.sp,
+                    color = Color.White
+                )
                 UserForm(
                     isCreateAccount = false,
                     navController = navController,
                     viewModel = viewModel
                 )
             } else {
-                Text(text = "Register")
+                Text(
+                    text = "Register",
+                    fontSize = 24.sp,
+                    color = Color.White
+                )
                 UserForm(
                     isCreateAccount = true,
                     navController = navController,
@@ -101,13 +120,13 @@ fun SwitchFormText(showLoginForm: MutableState<Boolean>) {
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(text = text1)
+        Text(text = text1, color = Color(0xFFFFA500))
         Text(
             text = text2,
             modifier = Modifier
                 .clickable { showLoginForm.value = !showLoginForm.value }
                 .padding(start = 5.dp),
-            color = MaterialTheme.colorScheme.secondaryContainer
+            color = Color.White
         )
     }
 }
@@ -116,6 +135,7 @@ fun SwitchFormText(showLoginForm: MutableState<Boolean>) {
 fun SubmitButton(textId: String, validInput: Boolean, onClick: () -> Unit) {
     Button(
         onClick = onClick,
+        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFA500)),
         modifier = Modifier
             .padding(3.dp)
             .fillMaxWidth(),
@@ -124,6 +144,7 @@ fun SubmitButton(textId: String, validInput: Boolean, onClick: () -> Unit) {
     ) {
         Text(
             text = textId,
+            color = Color.White,
             modifier = Modifier.padding(5.dp)
         )
     }
@@ -143,7 +164,7 @@ fun PasswordInput(passwordState: MutableState<String>,
     OutlinedTextField(
         value = passwordState.value,
         onValueChange = {passwordState.value = it},
-        label = { Text(text = labelId)},
+        label = { Text(text = labelId, color = if (passwordState.value.isNotEmpty()) Color(0xFFFFA500) else Color.White)},
         singleLine = true,
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Password
@@ -152,6 +173,12 @@ fun PasswordInput(passwordState: MutableState<String>,
             .padding(bottom = 10.dp, start = 10.dp, end = 10.dp)
             .fillMaxWidth(),
         visualTransformation = visualTransformation,
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            textColor = Color.White,
+            cursorColor = Color.White,
+            focusedBorderColor = Color.White,
+            unfocusedBorderColor = Color.Gray
+        ),
         trailingIcon = {
             if (passwordState.value.isNotBlank()){
                 PasswordVisibleIcon(passwordVisible)
@@ -177,7 +204,8 @@ fun PasswordVisibleIcon(passwordVisible: MutableState<Boolean>) {
     }) {
         Icon(
             imageVector = image,
-            contentDescription = "Visibility Toogle" )
+            contentDescription = "Visibility Toogle",
+            tint = Color.White)
     }
 }
 
@@ -192,13 +220,19 @@ fun InputField(
     OutlinedTextField(
         value = valueState.value ,
         onValueChange = {valueState.value = it},
-        label = { Text(text = labelId)},
+        label = { Text(text = labelId, color = if (valueState.value.isNotEmpty()) Color(0xFFFFA500) else Color.White)},
         singleLine = isSingleLine,
+        keyboardOptions = KeyboardOptions(
+            keyboardType = keyboardType
+        ),
         modifier = Modifier
             .padding(bottom = 10.dp, start = 10.dp, end = 10.dp)
             .fillMaxWidth(),
-        keyboardOptions = KeyboardOptions(
-            keyboardType = keyboardType
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            textColor = Color.White,
+            cursorColor = Color.White,
+            focusedBorderColor = Color.White,
+            unfocusedBorderColor = Color.Gray
         )
     )
 }

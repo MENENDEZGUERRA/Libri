@@ -36,9 +36,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.example.libriv2.ui.Navigation.TabScreens
 
 @Composable
-fun LibriLoginScreen(viewModel: LoginScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()){
+fun LibriLoginScreen(viewModel: LoginScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), navController: NavController){
     //True = Login; False = Create
     val showLoginForm = rememberSaveable {
         mutableStateOf(true)
@@ -106,7 +108,7 @@ fun LibriLoginScreen(viewModel: LoginScreenViewModel = androidx.lifecycle.viewmo
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun UserForm(isCreateAccount: Boolean = false,
-             onDone: (String, String) -> Unit = {email, pwd ->}
+             onDone: (String, String) -> Unit = {email, pwd ->}, navController: NavController
 ) {
     val email = rememberSaveable {
         mutableStateOf("")
@@ -132,18 +134,25 @@ fun UserForm(isCreateAccount: Boolean = false,
             passwordVisible = passwordVisible
         )
         SubmitButton(
-            textId = if (isCreateAccount) { "Register"} else {"Log in" },
-            validInput = valid
-        ){
-            onDone(email.value.trim(), password.value.trim())
-            keyboardController?.hide()
-        }
+            textId = if (isCreateAccount) "Register" else "Log in",
+            validInput = valid,
+            onClick = {
+                onDone(email.value.trim(), password.value.trim())
+                keyboardController?.hide()
+            },
+            onNavigate = {
+                navController.navigate(route = TabScreens.MainScreen.route)
+            }
+        )
     }
 }
 
 @Composable
-fun SubmitButton(textId: String, validInput: Boolean, onClick: ()->Unit) {
-    Button(onClick = onClick,
+fun SubmitButton(textId: String, validInput: Boolean, onClick: ()->Unit, onNavigate: () -> Unit) {
+    Button(
+        onClick = {
+            onClick()
+            onNavigate()},
         modifier = Modifier
             .padding(3.dp)
             .fillMaxWidth(),

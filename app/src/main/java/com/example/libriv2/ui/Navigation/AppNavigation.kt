@@ -9,7 +9,8 @@ import com.example.libriv2.ui.Screens.Adventure.adventure
 import com.example.libriv2.ui.Screens.BookPage.pageContent
 import com.example.libriv2.ui.Screens.Chat.ChatContent
 import com.example.libriv2.ui.Screens.Horror.horror
-import com.example.libriv2.ui.Screens.Login.LoginScreen
+import com.example.libriv2.ui.Screens.Login.LibriLoginScreen
+import com.example.libriv2.ui.Screens.Login.LoginScreenViewModel
 import com.example.libriv2.ui.Screens.Main.principal
 import com.example.libriv2.ui.Screens.ProfileScreen.profile
 import com.example.libriv2.ui.Screens.Romance.romance
@@ -18,7 +19,7 @@ import com.example.libriv2.ui.Screens.Romance.romance
 @Composable
 fun AppNavigation(){
     val navController = rememberNavController()
-    NavHost(navController= navController, startDestination= TabScreens.LoginScreen.route){
+    NavHost(navController= navController, startDestination= TabScreens.LibriLoginScreen.route){
         composable(route = TabScreens.MainScreen.route){
             principal(navController)
         }
@@ -43,8 +44,8 @@ fun AppNavigation(){
         composable(route = TabScreens.RomanceScreen.route){
             romance(navController)
         }
-        composable(route = TabScreens.LoginScreen.route){
-            LoginScreen(navController)
+        composable(route = TabScreens.LibriLoginScreen.route){
+            LibriLoginScreen(LoginScreenViewModel(), navController)
         }
     }
 }

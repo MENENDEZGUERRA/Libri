@@ -45,7 +45,7 @@ fun AppNavigation(){
             romance(navController)
         }
         composable(route = TabScreens.LibriLoginScreen.route){
-            LibriLoginScreen(LoginScreenViewModel(), navController)
+            LibriLoginScreen(navController)
         }
     }
 }

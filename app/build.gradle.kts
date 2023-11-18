@@ -70,6 +70,9 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    //LiveData
+    implementation("androidx.compose.runtime:runtime-livedata:1.5.4")
+
     // Import the Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
     implementation("com.google.firebase:firebase-auth-ktx")

@@ -43,6 +43,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.libriv2.R
@@ -50,7 +51,7 @@ import com.example.libriv2.ui.Navigation.AppNavigation
 import com.example.libriv2.ui.Navigation.TabScreens
 import com.example.libriv2.ui.theme.LibriV2Theme
 
-class MainActivity : ComponentActivity() {
+class MainScreen : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -64,7 +65,8 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun principal(navController: NavController) {
+fun principal(navController: NavController, mainViewModel: MainViewModel = viewModel()) {
+    val getData = mainViewModel.state.value
     LazyColumn(modifier = Modifier
         .fillMaxSize()
         .background(Color.Black)
@@ -90,7 +92,7 @@ fun principal(navController: NavController) {
                     }
                     Column() {
                         Text(
-                            text = "Hello again, Username",
+                            text = "Hello again, ${getData.displayName}",
                             modifier = Modifier.padding(top = 40.dp),
                             color = Color.White,
                             fontSize = 24.sp, fontStyle = FontStyle.Italic

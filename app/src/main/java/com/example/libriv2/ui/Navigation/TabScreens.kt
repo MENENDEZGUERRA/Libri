@@ -10,5 +10,6 @@ sealed class TabScreens(val route: String){
     object ActionScreen: TabScreens("action")
     object RomanceScreen: TabScreens("romance")
     object LibriLoginScreen: TabScreens("login")
+    object SplashScreen: TabScreens("splash")
 }
 

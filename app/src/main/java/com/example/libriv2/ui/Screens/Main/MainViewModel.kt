@@ -11,7 +11,7 @@ import kotlinx.coroutines.tasks.await
 
 
 class MainViewModel: ViewModel()  {
-    val state = mutableStateOf(users())
+    val state = mutableStateOf(Users())
 
     init {
         getData()
@@ -23,9 +23,9 @@ class MainViewModel: ViewModel()  {
         }
     }
 }
-suspend fun getDataFromFirestore():users{
+suspend fun getDataFromFirestore():Users{
     val db = FirebaseFirestore.getInstance()
-    var users = users()
+    var users = Users()
 
     try{
         db.collection("users").get().await().map {

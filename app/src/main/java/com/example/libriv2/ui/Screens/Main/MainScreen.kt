@@ -92,7 +92,7 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
                     }
                     Column() {
                         Text(
-                            text = "Hello again, ${getData.displayName}",
+                            text = getData.displayName,
                             modifier = Modifier.padding(top = 40.dp),
                             color = Color.White,
                             fontSize = 24.sp, fontStyle = FontStyle.Italic

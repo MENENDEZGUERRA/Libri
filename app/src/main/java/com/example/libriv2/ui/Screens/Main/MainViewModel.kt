@@ -6,12 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.auth.User
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 
 class MainViewModel: ViewModel()  {
-    val state = mutableStateOf(users())
+    val state = mutableStateOf(Users())
 
     init {
         getData()
@@ -23,9 +24,9 @@ class MainViewModel: ViewModel()  {
         }
     }
 }
-suspend fun getDataFromFirestore():users{
+suspend fun getDataFromFirestore():Users{
     val db = FirebaseFirestore.getInstance()
-    var users = users()
+    var users = Users()
 
     try{
         db.collection("users").get().await().map {

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.auth.User
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 

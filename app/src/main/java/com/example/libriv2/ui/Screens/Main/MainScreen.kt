@@ -37,6 +37,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -102,14 +103,14 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
                     }
                     Column() {
                         Text(
-                            text = R.string.salute.toString() + "${userData.displayName}",
+                            text = stringResource(id = R.string.salute) + "${userData.displayName}",
                             modifier = Modifier.padding(top = 40.dp),
                             color = Color.White,
                             fontSize = 24.sp, fontStyle = FontStyle.Italic
                         )
 
                         Button(onClick = { navController.navigate(route = TabScreens.ProfileScreen.route) }) {
-                            Text(text = R.string.edit_profile.toString())
+                            Text(text = stringResource(id = R.string.edit_profile))
                         }
                     }
 
@@ -118,7 +119,7 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
             }
 
             Box(modifier = Modifier.padding(10.dp)){
-                Text(text = R.string.close.toString(),color = Color.White,fontSize = 24.sp)
+                Text(text = stringResource(id = R.string.close),color = Color.White,fontSize = 24.sp)
             }
 
             LazyRow(){
@@ -211,7 +212,7 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
             OutlinedTextField(
                 value = searchText,
                 onValueChange = { searchText = it },
-                label = { Text(R.string.search.toString(), color = Color.White) },
+                label = { Text(stringResource(id = R.string.search), color = Color.White) },
                 singleLine = true,
                 leadingIcon = { Icon(Icons.Default.Search, contentDescription = "Ícono de búsqueda", tint = Color.White) },
                 textStyle = TextStyle(color = Color.White),
@@ -248,7 +249,7 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
 
                             Text(
                                 modifier = Modifier.padding(horizontal = 35.dp),
-                                text = "Adventure",
+                                text = stringResource(id = R.string.adventure),
                                 color = Color.Black,
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold)
@@ -276,7 +277,7 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
 
                             Text(
                                 modifier = Modifier.padding(horizontal = 50.dp),
-                                text = R.string.horror.toString(),
+                                text = stringResource(id = R.string.horror),
                                 color = Color.Black,
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold)
@@ -308,7 +309,7 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
 
                             Text(
                                 modifier = Modifier.padding(horizontal = 50.dp),
-                                text = R.string.action.toString(),
+                                text = stringResource(id = R.string.action),
                                 color = Color.Black,
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold)
@@ -336,7 +337,7 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
 
                             Text(
                                 modifier = Modifier.padding(horizontal = 43.dp),
-                                text = R.string.romance.toString(),
+                                text = stringResource(id = R.string.romance),
                                 color = Color.Black,
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold)

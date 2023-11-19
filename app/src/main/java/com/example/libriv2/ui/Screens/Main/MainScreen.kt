@@ -102,14 +102,14 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
                     }
                     Column() {
                         Text(
-                            text = "Hello again, ${userData.displayName}",
+                            text = R.string.salute.toString() + "${userData.displayName}",
                             modifier = Modifier.padding(top = 40.dp),
                             color = Color.White,
                             fontSize = 24.sp, fontStyle = FontStyle.Italic
                         )
 
                         Button(onClick = { navController.navigate(route = TabScreens.ProfileScreen.route) }) {
-                            Text(text = "Edit Profile")
+                            Text(text = R.string.edit_profile.toString())
                         }
                     }
 
@@ -118,7 +118,7 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
             }
 
             Box(modifier = Modifier.padding(10.dp)){
-                Text(text = "Close to you",color = Color.White,fontSize = 24.sp)
+                Text(text = R.string.close.toString(),color = Color.White,fontSize = 24.sp)
             }
 
             LazyRow(){
@@ -211,7 +211,7 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
             OutlinedTextField(
                 value = searchText,
                 onValueChange = { searchText = it },
-                label = { Text("Buscar", color = Color.White) },
+                label = { Text(R.string.search.toString(), color = Color.White) },
                 singleLine = true,
                 leadingIcon = { Icon(Icons.Default.Search, contentDescription = "Ícono de búsqueda", tint = Color.White) },
                 textStyle = TextStyle(color = Color.White),
@@ -276,7 +276,7 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
 
                             Text(
                                 modifier = Modifier.padding(horizontal = 50.dp),
-                                text = "Horror",
+                                text = R.string.horror.toString(),
                                 color = Color.Black,
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold)
@@ -308,7 +308,7 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
 
                             Text(
                                 modifier = Modifier.padding(horizontal = 50.dp),
-                                text = "Action",
+                                text = R.string.action.toString(),
                                 color = Color.Black,
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold)
@@ -336,7 +336,7 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
 
                             Text(
                                 modifier = Modifier.padding(horizontal = 43.dp),
-                                text = "Romance",
+                                text = R.string.romance.toString(),
                                 color = Color.Black,
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold)

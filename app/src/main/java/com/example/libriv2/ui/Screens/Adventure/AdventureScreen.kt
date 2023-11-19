@@ -82,7 +82,7 @@ fun adventure(navController: NavController) {
                             .height(140.dp)
                     ) {
                         Text(
-                            text = "Adventure Books",
+                            text = R.string.adventure.toString(),
                             modifier = Modifier.padding(top = 20.dp),
                             color = Color.White,
                             fontSize = 41.sp,

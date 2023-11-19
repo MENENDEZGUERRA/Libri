@@ -82,7 +82,7 @@ fun actionB(navController: NavController) {
                             .height(140.dp)
                     ) {
                         Text(
-                            text = "Action Books",
+                            text = R.string.action.toString(),
                             modifier = Modifier.padding(top = 20.dp),
                             color = Color.White,
                             fontSize = 41.sp,

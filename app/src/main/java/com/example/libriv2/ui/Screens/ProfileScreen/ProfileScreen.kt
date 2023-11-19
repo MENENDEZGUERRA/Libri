@@ -106,7 +106,7 @@ fun profile(navController: NavController) {
             ){
                 Column {
                     Text(
-                        text = "Description",
+                        text = R.string.profile_description.toString(),
                         modifier = Modifier.padding(top = 5.dp),
                         color = Color.White,
                         fontSize = 45.sp, fontStyle = FontStyle.Italic
@@ -118,7 +118,7 @@ fun profile(navController: NavController) {
                         fontSize = 16.sp, fontStyle = FontStyle.Italic
                     )
                     Text(
-                        text = "Favourite Book",
+                        text = R.string.profile_favorite_book.toString(),
                         modifier = Modifier.padding(top = 5.dp),
                         color = Color.White,
                         fontSize = 45.sp, fontStyle = FontStyle.Italic

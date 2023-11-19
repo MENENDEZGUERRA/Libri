@@ -82,7 +82,7 @@ fun horror(navController: NavController) {
                             .height(140.dp)
                     ) {
                         Text(
-                            text = "Horror Books",
+                            text = R.string.horror.toString(),
                             modifier = Modifier.padding(top = 20.dp),
                             color = Color.White,
                             fontSize = 41.sp,

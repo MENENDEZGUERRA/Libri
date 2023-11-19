@@ -82,7 +82,7 @@ fun romance(navController: NavController) {
                             .height(140.dp)
                     ) {
                         Text(
-                            text = "Romance Books",
+                            text = R.string.romance.toString(),
                             modifier = Modifier.padding(top = 20.dp),
                             color = Color.White,
                             fontSize = 41.sp,

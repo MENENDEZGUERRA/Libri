@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_in">Iniciar sessão</string>
+    <string name="register">Registar</string>
+    <string name="e_mail">Correio eletrónico</string>
+    <string name="password">Palavra-passe</string>
+    <string name="have_account">Já tem uma conta?</string>
+    <string name="not_have_account">Ainda não tem uma conta?</string>
+    <string name="salute">"Olá novamente, "</string>
+    <string name="close">Perto de si</string>
+    <string name="search">Pesquisar</string>
+    <string name="edit_profile">Editar perfil</string>
+    <string name="adventure">Aventura</string>
+    <string name="horror">Terror</string>
+    <string name="action">Ação</string>
+    <string name="romance">Romance</string>
+    <string name="profile_description">Descrição</string>
+    <string name="profile_favorite_book">Livro favorito</string>
+</resources>

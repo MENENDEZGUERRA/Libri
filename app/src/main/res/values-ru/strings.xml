@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_in">Войти</string>
+    <string name="register">Регистрация</string>
+    <string name="e_mail">Электронная почта</string>
+    <string name="password">Пароль</string>
+    <string name="have_account">Уже есть учетная запись?</string>
+    <string name="not_have_account">Еще не зарегистрированы?</string>
+    <string name="salute">"И снова здравствуйте, "</string>
+    <string name="close">Рядом с вами</string>
+    <string name="search">Поиск</string>
+    <string name="edit_profile">Редактировать профиль</string>
+    <string name="adventure">Приключения</string>
+    <string name="horror">Ужасы</string>
+    <string name="action">Экшн</string>
+    <string name="romance">Романтика</string>
+    <string name="profile_description">Описание</string>
+    <string name="profile_favorite_book">Любимая книга</string>
+</resources>

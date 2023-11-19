@@ -50,7 +50,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.libriv2.R
 import com.example.libriv2.ui.Navigation.AppNavigation
 import com.example.libriv2.ui.Navigation.TabScreens
-import com.example.libriv2.ui.Screens.Login.LoginScreenViewModel
+import com.example.libriv2.ui.Screens.BookPage.BookPageViewModel
+import com.example.libriv2.ui.Screens.BookPage.BookStorage
 import com.example.libriv2.ui.theme.LibriV2Theme
 
 class MainScreen : ComponentActivity() {
@@ -67,8 +68,10 @@ class MainScreen : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun principal(navController: NavController, mainViewModel: MainViewModel = viewModel()) {
+fun principal(navController: NavController, mainViewModel: MainViewModel = viewModel(), bookPageViewModel: BookPageViewModel = viewModel()) {
     val mainViewModel: MainViewModel = viewModel()
+    val bookPageViewModel: BookPageViewModel = viewModel()
+    val bookdata = bookPageViewModel.bookState.value
     val userData = mainViewModel.state.value
     LazyColumn(modifier = Modifier
         .fillMaxSize()
@@ -126,13 +129,20 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
                     Card(modifier = Modifier
                         .width(185.dp)
                         .height(240.dp)
-                        .padding(10.dp)) {
+                        .padding(10.dp)
+                    ) {
 
                         Column() {
                             Box(modifier = Modifier
                                 .size(180.dp)
                                 .padding(10.dp)
-                                .background(Color.White)){
+                                .background(Color.White)
+                                .clickable {
+                                    BookStorage.currentBookId = "zKh6A7bCftueuJt4d0IW"
+                                    //val bookId = "wEMe5ZThukbKB8GHMORC"
+                                    //bookPageViewModel.getBookData(bookId)
+                                    navController.navigate(route = TabScreens.BookPageScreen.route)
+                                }){
                                 Image(
                                     modifier = Modifier.fillMaxSize(),
                                     painter = painterResource(id = R.drawable.greatgatsby),
@@ -160,7 +170,10 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
                                 .size(180.dp)
                                 .padding(10.dp)
                                 .background(Color.White)
-                                .clickable { navController.navigate(route = TabScreens.BookPageScreen.route) }){
+                                .clickable {
+                                    BookStorage.currentBookId = "kqLLcOWi2wmuKxzzyZnD"
+                                    navController.navigate(route = TabScreens.BookPageScreen.route)
+                                }){
                                 Image(
                                     modifier = Modifier.fillMaxSize(),
                                     painter = painterResource(id = R.drawable.harrypotter1),
@@ -187,7 +200,11 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
                             Box(modifier = Modifier
                                 .size(180.dp)
                                 .padding(10.dp)
-                                .background(Color.White)){
+                                .background(Color.White)
+                                .clickable {
+                                    BookStorage.currentBookId = "WJ2vZx4Q4uDfvm1buNir"
+                                    navController.navigate(route = TabScreens.BookPageScreen.route)
+                                }){
                                 Image(
                                     modifier = Modifier.fillMaxSize(),
                                     painter = painterResource(id = R.drawable.mobydick),

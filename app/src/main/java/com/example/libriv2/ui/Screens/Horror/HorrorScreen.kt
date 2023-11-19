@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -25,6 +26,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.libriv2.R
 import com.example.libriv2.ui.Navigation.AppNavigation
+import com.example.libriv2.ui.Navigation.TabScreens
+import com.example.libriv2.ui.Screens.BookPage.BookStorage
 import com.example.libriv2.ui.theme.LibriV2Theme
 
 class HorrorScreen : ComponentActivity() {
@@ -99,8 +102,20 @@ fun horror(navController: NavController) {
                         .padding(top = 10.dp),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    AdventureCard(imageId = R.drawable.shining, label = "The Shining")
-                    AdventureCard(imageId = R.drawable.exorcist, label = "The Exorcist")
+                    HorrorCard(imageId = R.drawable.shining,
+                        label = "The Shining",
+                        bookId = "NRwIztZyzW4b7sA4lNOv",
+                        onBookClick = { bookId ->
+                            BookStorage.currentBookId = bookId
+                            navController.navigate(TabScreens.BookPageScreen.route)
+                        })
+                    HorrorCard(imageId = R.drawable.exorcist,
+                        label = "The Exorcist",
+                        bookId = "ESHLkwpevKyvtn2sE2BA",
+                        onBookClick = { bookId ->
+                            BookStorage.currentBookId = bookId
+                            navController.navigate(TabScreens.BookPageScreen.route)
+                        })
                 }
 
                 Row(
@@ -109,8 +124,20 @@ fun horror(navController: NavController) {
                         .padding(top = 10.dp),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    AdventureCard(imageId = R.drawable.thehunger, label = "The Hunger")
-                    AdventureCard(imageId = R.drawable.rings, label = "Rings")
+                    HorrorCard(imageId = R.drawable.thehunger,
+                        label = "The Hunger",
+                        bookId = "qc9HLZQOARmF9VAYv0jy",
+                        onBookClick = { bookId ->
+                            BookStorage.currentBookId = bookId
+                            navController.navigate(TabScreens.BookPageScreen.route)
+                        })
+                    HorrorCard(imageId = R.drawable.rings,
+                        label = "Rings",
+                        bookId = "FSSmRJqFaRUN9HTeOlgN",
+                        onBookClick = { bookId ->
+                            BookStorage.currentBookId = bookId
+                            navController.navigate(TabScreens.BookPageScreen.route)
+                        })
                 }
             }
         }
@@ -118,12 +145,13 @@ fun horror(navController: NavController) {
 }
 
 @Composable
-fun AdventureCard(imageId: Int, label: String) {
+fun HorrorCard(imageId: Int, label: String, bookId: String, onBookClick: (String) -> Unit) {
     Card(
         modifier = Modifier
             .width(185.dp)
             .height(240.dp)
             .padding(10.dp)
+            .clickable { onBookClick(bookId) }
     ) {
         Box(
             modifier = Modifier

@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -21,11 +22,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.libriv2.R
 import com.example.libriv2.ui.Navigation.AppNavigation
+import com.example.libriv2.ui.Navigation.TabScreens
+import com.example.libriv2.ui.Screens.BookPage.BookPageViewModel
 import com.example.libriv2.ui.theme.LibriV2Theme
+import com.example.libriv2.ui.Screens.BookPage.BookStorage
+
 
 class ActionScreen : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +45,9 @@ class ActionScreen : ComponentActivity() {
 }
 
 @Composable
-fun actionB(navController: NavController) {
+fun actionB(navController: NavController, bookPageViewModel: BookPageViewModel = viewModel()) {
+    val bookPageViewModel: BookPageViewModel = viewModel()
+
     LazyColumn(modifier = Modifier
         .fillMaxSize()
         .background(Color.Black)
@@ -99,8 +107,22 @@ fun actionB(navController: NavController) {
                         .padding(top = 10.dp),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    AdventureCard(imageId = R.drawable.hobbit, label = "The Hobbit")
-                    AdventureCard(imageId = R.drawable.mobydick, label = "Mockingjay")
+                    ActionCard(
+                        imageId = R.drawable.hobbit,
+                        label = "The Hobbit",
+                        bookId = "wEMe5ZThukbKB8GHMORC",
+                        onBookClick = { bookId ->
+                            BookStorage.currentBookId = bookId
+                            navController.navigate(TabScreens.BookPageScreen.route)
+                        })
+                    ActionCard(imageId = R.drawable.mockingjay,
+                        label = "Mockingjay",
+                        bookId = "0U6DhsWPOpEjeh7tmDNK",
+                        onBookClick = { bookId ->
+                            BookStorage.currentBookId = bookId
+                            navController.navigate(TabScreens.BookPageScreen.route)
+                        }
+                        )
                 }
 
                 Row(
@@ -109,8 +131,20 @@ fun actionB(navController: NavController) {
                         .padding(top = 10.dp),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    AdventureCard(imageId = R.drawable.blackflag, label = "Black Flag")
-                    AdventureCard(imageId = R.drawable.divergent, label = "Divergent")
+                    ActionCard(imageId = R.drawable.blackflag,
+                        label = "Black Flag",
+                        bookId = "UhLVJir7PRn8rNmEH9o5",
+                        onBookClick = { bookId ->
+                            BookStorage.currentBookId = bookId
+                            navController.navigate(TabScreens.BookPageScreen.route)
+                        })
+                    ActionCard(imageId = R.drawable.divergent,
+                        label = "Divergent",
+                        bookId = "hI18plTkIO3EOFoWd9eK",
+                        onBookClick = { bookId ->
+                            BookStorage.currentBookId = bookId
+                            navController.navigate(TabScreens.BookPageScreen.route)
+                        })
                 }
             }
         }
@@ -118,12 +152,13 @@ fun actionB(navController: NavController) {
 }
 
 @Composable
-fun AdventureCard(imageId: Int, label: String) {
+fun ActionCard(imageId: Int, label: String, bookId: String, onBookClick: (String) -> Unit) {
     Card(
         modifier = Modifier
             .width(185.dp)
             .height(240.dp)
             .padding(10.dp)
+            .clickable { onBookClick(bookId) }
     ) {
         Box(
             modifier = Modifier

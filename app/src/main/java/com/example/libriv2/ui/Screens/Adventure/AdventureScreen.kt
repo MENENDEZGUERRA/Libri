@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -25,6 +26,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.libriv2.R
 import com.example.libriv2.ui.Navigation.AppNavigation
+import com.example.libriv2.ui.Navigation.TabScreens
+import com.example.libriv2.ui.Screens.BookPage.BookStorage
 import com.example.libriv2.ui.theme.LibriV2Theme
 
 class AdventureScreen : ComponentActivity() {
@@ -99,8 +102,22 @@ fun adventure(navController: NavController) {
                         .padding(top = 10.dp),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    AdventureCard(imageId = R.drawable.mobydick, label = "Moby Dick")
-                    AdventureCard(imageId = R.drawable.intothewild, label = "Into the Wild")
+                    AdventureCard(
+                        imageId = R.drawable.mobydick,
+                        label = "Moby Dick",
+                        bookId = "WJ2vZx4Q4uDfvm1buNir",
+                        onBookClick = { bookId ->
+                            BookStorage.currentBookId = bookId
+                            navController.navigate(TabScreens.BookPageScreen.route)
+                        })
+                    AdventureCard(
+                        imageId = R.drawable.intothewild,
+                        label = "Into the Wild",
+                        bookId = "FWqPyy4ps7SAZqhJaz3b",
+                        onBookClick = { bookId ->
+                            BookStorage.currentBookId = bookId
+                            navController.navigate(TabScreens.BookPageScreen.route)
+                        })
                 }
 
                 Row(
@@ -109,8 +126,22 @@ fun adventure(navController: NavController) {
                         .padding(top = 10.dp),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    AdventureCard(imageId = R.drawable.kidnapped, label = "Kidnapped")
-                    AdventureCard(imageId = R.drawable.whitefang, label = "White Fang")
+                    AdventureCard(
+                        imageId = R.drawable.kidnapped,
+                        label = "Kidnapped",
+                        bookId = "3evP6EMKB2cEZZX3GCf2",
+                        onBookClick = { bookId ->
+                            BookStorage.currentBookId = bookId
+                            navController.navigate(TabScreens.BookPageScreen.route)
+                        })
+                    AdventureCard(
+                        imageId = R.drawable.whitefang,
+                        label = "White Fang",
+                        bookId = "WUL3NNAb3ozntChg8g8l",
+                        onBookClick = { bookId ->
+                            BookStorage.currentBookId = bookId
+                            navController.navigate(TabScreens.BookPageScreen.route)
+                        })
                 }
             }
         }
@@ -118,12 +149,13 @@ fun adventure(navController: NavController) {
 }
 
 @Composable
-fun AdventureCard(imageId: Int, label: String) {
+fun AdventureCard(imageId: Int, label: String, bookId: String, onBookClick: (String) -> Unit) {
     Card(
         modifier = Modifier
             .width(185.dp)
             .height(240.dp)
             .padding(10.dp)
+            .clickable { onBookClick(bookId) }
     ) {
         Box(
             modifier = Modifier

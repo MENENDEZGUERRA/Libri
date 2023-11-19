@@ -13,6 +13,7 @@ import kotlinx.coroutines.tasks.await
 
 class MainViewModel: ViewModel()  {
     val state = mutableStateOf(Users())
+    val selectedBookId = mutableStateOf<String?>(null)
 
     init {
         getData()

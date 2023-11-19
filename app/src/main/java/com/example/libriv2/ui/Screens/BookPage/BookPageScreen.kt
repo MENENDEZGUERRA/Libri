@@ -21,6 +21,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,6 +31,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.libriv2.R
 import com.example.libriv2.ui.Navigation.AppNavigation
@@ -65,7 +67,14 @@ fun BookPreview(){
 }
 
 @Composable
-fun pageContent(navController: NavController){
+fun pageContent(navController: NavController, viewModel: BookPageViewModel = viewModel()){
+    val bookPageViewModel: BookPageViewModel = viewModel()
+    val bookData = viewModel.bookState.value
+    val bookId = BookStorage.currentBookId ?: return
+
+    LaunchedEffect(bookId) {
+        viewModel.getBookData(bookId)
+    }
     LazyColumn(modifier = Modifier
         .fillMaxSize()
         .background(Color.Black)
@@ -114,7 +123,7 @@ fun pageContent(navController: NavController){
                         }
                         Column() {
                             Text(
-                                text = "Book Owner",
+                                text = "Book Owner: ${bookData.owner}",
                                 modifier = Modifier.padding(top = 15.dp),
                                 color = Color.White,
                                 fontSize = 24.sp, fontStyle = FontStyle.Italic
@@ -152,25 +161,25 @@ fun pageContent(navController: NavController){
             ){
                 Column {
                     Text(
-                        text = "Book Name",
-                        modifier = Modifier.padding(top = 5.dp),
-                        color = Color.White,
-                        fontSize = 45.sp, fontStyle = FontStyle.Italic
-                    )
-                    Text(
-                        text = "Author",
+                        text = "Book Name: ${bookData.name}",
                         modifier = Modifier.padding(top = 5.dp),
                         color = Color.White,
                         fontSize = 16.sp, fontStyle = FontStyle.Italic
                     )
                     Text(
-                        text = "Book Review",
+                        text = "Author: ${bookData.author}",
                         modifier = Modifier.padding(top = 5.dp),
                         color = Color.White,
                         fontSize = 16.sp, fontStyle = FontStyle.Italic
                     )
                     Text(
-                        text = "Description",
+                        text = "Book Review: ${bookData.review}",
+                        modifier = Modifier.padding(top = 5.dp),
+                        color = Color.White,
+                        fontSize = 16.sp, fontStyle = FontStyle.Italic
+                    )
+                    Text(
+                        text = "Description: ${bookData.description}",
                         modifier = Modifier.padding(top = 5.dp),
                         color = Color.White,
                         fontSize = 16.sp, fontStyle = FontStyle.Italic

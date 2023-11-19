@@ -49,6 +49,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.libriv2.R
 import com.example.libriv2.ui.Navigation.AppNavigation
 import com.example.libriv2.ui.Navigation.TabScreens
+import com.example.libriv2.ui.Screens.Login.LoginScreenViewModel
 import com.example.libriv2.ui.theme.LibriV2Theme
 
 class MainScreen : ComponentActivity() {
@@ -66,7 +67,8 @@ class MainScreen : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun principal(navController: NavController, mainViewModel: MainViewModel = viewModel()) {
-    val getData = mainViewModel.state.value
+    val mainViewModel: MainViewModel = viewModel()
+    val userData = mainViewModel.state.value
     LazyColumn(modifier = Modifier
         .fillMaxSize()
         .background(Color.Black)
@@ -92,7 +94,7 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
                     }
                     Column() {
                         Text(
-                            text = getData.displayName,
+                            text = "Hello again, ${userData.displayName}",
                             modifier = Modifier.padding(top = 40.dp),
                             color = Color.White,
                             fontSize = 24.sp, fontStyle = FontStyle.Italic

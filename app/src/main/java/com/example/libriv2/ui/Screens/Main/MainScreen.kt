@@ -32,6 +32,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -89,8 +90,15 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
                         .width(190.dp)
                         .padding(top = 25.dp)
                         .padding(horizontal = 25.dp)
-                        .background(Color.Black, shape = CircleShape.also { })
+                        .background(Color.White, shape = CircleShape.also { })
                         .height(140.dp)){
+                        Image(
+                            painter = painterResource(id = R.drawable.librilogo),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(120.dp)
+                                .align(Alignment.Center),
+                            contentScale = ContentScale.Fit)
                     }
                     Column() {
                         Text(

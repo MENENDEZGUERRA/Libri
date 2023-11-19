@@ -1,3 +1,29 @@
 <resources>
-    <string name="app_name">LibriV2</string>
+    //Log
+    <string name="app_name" translatable="false">LibriV2</string>
+    <string name="log_in" translatable="true">Log In</string>
+    <string name="register" translatable="true">Register</string>
+    <string name="e_mail" translatable="true">Email</string>
+    <string name="password" translatable="true">Password</string>
+    <string name="have_account" translatable="true">Already have an account?</string>
+    <string name="not_have_account" translatable="true">Not have an account yet?</string>
+
+    //Main
+    <string name="salute" translatable="true">Hello Again,</string>
+    <string name="close" translatable="true">Close to you</string>
+    <string name="search" translatable="true">Search</string>
+    <string name="edit_profile" translatable="true">Edit Profile</string>
+
+    //Categories
+    <string name="adventure" translatable="true">Adventure</string>
+    <string name="horror" translatable="true">Horror</string>
+    <string name="action" translatable="true">Action</string>
+    <string name="romance" translatable="true">Romance</string>
+
+    //Edit profile
+    <string name="profile_description" translatable="true">Description</string>
+    <string name="profile_favorite_book" translatable="true">Favorite Book</string>
+
+
+
 </resources>

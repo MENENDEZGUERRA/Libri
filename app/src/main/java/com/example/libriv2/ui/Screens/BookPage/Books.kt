@@ -5,5 +5,6 @@ data class Books(
     val author: String = "",
     val review: String = "",
     val description: String = "",
-    val owner: String = ""
+    val owner: String = "",
+    val photo: String = ""
 )

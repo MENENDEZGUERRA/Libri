@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import com.example.libriv2.R
 import com.example.libriv2.ui.Navigation.AppNavigation
 import com.example.libriv2.ui.Navigation.TabScreens
@@ -107,11 +108,12 @@ fun pageContent(navController: NavController, viewModel: BookPageViewModel = vie
                             .padding(top = 15.dp)
                             .padding(bottom = 15.dp)
                         ){
-                            Image(
+                            /*Image(
                                 painter = painterResource(id = R.drawable.harrypotter1),
                                 contentDescription = null,
                                 contentScale = ContentScale.Fit
-                            )
+                            )*/
+                            MyImageComponent(imageUrl = bookData.photo)
                         }
                     }
                     Column {
@@ -210,4 +212,12 @@ fun pageContent(navController: NavController, viewModel: BookPageViewModel = vie
 
         }
     }
+}
+
+@Composable
+fun MyImageComponent(imageUrl: String) {
+    AsyncImage(
+        model = imageUrl,
+        contentDescription = null
+    )
 }

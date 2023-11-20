@@ -22,6 +22,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -29,10 +30,12 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.libriv2.R
 import com.example.libriv2.ui.Navigation.AppNavigation
+import com.example.libriv2.ui.Screens.Main.MainViewModel
 import com.example.libriv2.ui.theme.LibriV2Theme
 
 class ProfileScreen : ComponentActivity() {
@@ -47,7 +50,9 @@ class ProfileScreen : ComponentActivity() {
 }
 
 @Composable
-fun profile(navController: NavController) {
+fun profile(navController: NavController, mainViewModel: MainViewModel = viewModel()) {
+    val mainViewModel: MainViewModel = viewModel()
+    val userData = mainViewModel.state.value
     LazyColumn(modifier = Modifier
         .fillMaxSize()
         .background(Color.Black)
@@ -87,10 +92,15 @@ fun profile(navController: NavController) {
                     Box(
                         modifier = Modifier
                             .background(Color.Black, shape = CircleShape)
-                            .size(200.dp)
-                    )
+                            .size(200.dp),
+                        contentAlignment = Alignment.Center
+                    ){
+                        Image(painter = painterResource(id = R.drawable.profilepic),
+                            contentDescription = null,
+                            modifier = Modifier.size(200.dp).clip(CircleShape))
+                    }
                     Text(
-                        text = "Username",
+                        text = userData.displayName,
                         modifier = Modifier.padding(top = 15.dp),
                         color = Color.White,
                         fontSize = 35.sp, fontStyle = FontStyle.Italic
@@ -112,7 +122,7 @@ fun profile(navController: NavController) {
                         fontSize = 45.sp, fontStyle = FontStyle.Italic
                     )
                     Text(
-                        text = "Username description",
+                        text = "Hello, community of readers! I am an avid reader and collector of all kinds of books. I'm a big fan of the fantasy and science fiction genres, but I don't limit myself to them. I love discovering new authors and genres.",
                         modifier = Modifier.padding(top = 5.dp),
                         color = Color.White,
                         fontSize = 16.sp, fontStyle = FontStyle.Italic
@@ -124,7 +134,7 @@ fun profile(navController: NavController) {
                         fontSize = 45.sp, fontStyle = FontStyle.Italic
                     )
                     Text(
-                        text = "Username's favourite book",
+                        text = "My favourite book of all time is Harry Potter and the Prisoner of Azkaban",
                         modifier = Modifier.padding(top = 5.dp),
                         color = Color.White,
                         fontSize = 16.sp, fontStyle = FontStyle.Italic

@@ -13,7 +13,6 @@ import kotlinx.coroutines.tasks.await
 
 class MainViewModel: ViewModel()  {
     val state = mutableStateOf(Users())
-    val selectedBookId = mutableStateOf<String?>(null)
 
     init {
         getData()
@@ -29,18 +28,4 @@ class MainViewModel: ViewModel()  {
 
 
 
-}
-suspend fun getDataFromFirestore():Users{
-    val db = FirebaseFirestore.getInstance()
-    var users = Users()
-
-    try{
-        db.collection("users").get().await().map {
-            val result = it.toObject(users::class.java)
-            users = result
-        }
-    }catch (e:FirebaseFirestoreException){
-        Log.d("error", "getDataFromFirestore: $e")
-    }
-    return users
 }

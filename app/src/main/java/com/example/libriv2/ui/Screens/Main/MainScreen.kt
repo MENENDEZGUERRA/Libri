@@ -112,7 +112,7 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
                         )
 
                         Button(onClick = { navController.navigate(route = TabScreens.ProfileScreen.route) }) {
-                            Text(text = "Edit Profile")
+                            Text(text = "View Profile")
                         }
                     }
 
@@ -139,8 +139,6 @@ fun principal(navController: NavController, mainViewModel: MainViewModel = viewM
                                 .background(Color.White)
                                 .clickable {
                                     BookStorage.currentBookId = "zKh6A7bCftueuJt4d0IW"
-                                    //val bookId = "wEMe5ZThukbKB8GHMORC"
-                                    //bookPageViewModel.getBookData(bookId)
                                     navController.navigate(route = TabScreens.BookPageScreen.route)
                                 }){
                                 Image(

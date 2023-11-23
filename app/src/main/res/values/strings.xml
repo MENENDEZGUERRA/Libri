@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">LibriV2</string>
     //Log
     <string name="app_name" translatable="false">LibriV2</string>
     <string name="log_in" translatable="true">Log In</string>

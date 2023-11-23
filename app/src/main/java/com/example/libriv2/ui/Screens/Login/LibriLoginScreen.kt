@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -24,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.libriv2.R
 import com.example.libriv2.ui.Navigation.TabScreens
 
 
@@ -46,7 +48,7 @@ fun LibriLoginScreen(navController: NavController, viewModel: LoginScreenViewMod
         ) {
             if (showLoginForm.value) {
                 Text(
-                    text = "Log In",
+                    text = stringResource(id = R.string.log_in),
                     fontSize = 24.sp,
                     color = Color.White
                 )
@@ -57,7 +59,7 @@ fun LibriLoginScreen(navController: NavController, viewModel: LoginScreenViewMod
                 )
             } else {
                 Text(
-                    text = "Register",
+                    text = stringResource(id = R.string.register),
                     fontSize = 24.sp,
                     color = Color.White
                 )
@@ -92,7 +94,7 @@ fun UserForm(
     PasswordInput(passwordState = password, labelId = "Password", passwordVisible = passwordVisible)
 
     SubmitButton(
-        textId = if (isCreateAccount) "Register" else "Log in",
+        textId = if (isCreateAccount) stringResource(id = R.string.register) else stringResource(id = R.string.log_in),
         validInput = valid,
         onClick = {
             if (isCreateAccount) {
@@ -113,8 +115,8 @@ fun UserForm(
 
 @Composable
 fun SwitchFormText(showLoginForm: MutableState<Boolean>) {
-    val text1 = if (showLoginForm.value) "Not have an account yet?" else "Already have an account?"
-    val text2 = if (showLoginForm.value) "Register" else "Log in"
+    val text1 = if (showLoginForm.value) stringResource(id = R.string.not_have_account) else stringResource(id = R.string.have_account)
+    val text2 = if (showLoginForm.value) stringResource(id = R.string.register) else stringResource(id = R.string.log_in)
 
     Row(
         horizontalArrangement = Arrangement.Center,
@@ -240,7 +242,7 @@ fun InputField(
 @Composable
 fun EmailInput(
     emailState: MutableState<String>,
-    labelId : String = "Email"
+    labelId : String = stringResource(id = R.string.e_mail)
 ) {
     InputField(
         valueState = emailState,

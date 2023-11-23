@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -85,7 +86,7 @@ fun romance(navController: NavController) {
                             .height(140.dp)
                     ) {
                         Text(
-                            text = "Romance Books",
+                            text = stringResource(id = R.string.romance),
                             modifier = Modifier.padding(top = 20.dp),
                             color = Color.White,
                             fontSize = 41.sp,

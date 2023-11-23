@@ -26,6 +26,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -116,7 +117,7 @@ fun profile(navController: NavController, mainViewModel: MainViewModel = viewMod
             ){
                 Column {
                     Text(
-                        text = "Description",
+                        text = stringResource(id = R.string.profile_description),
                         modifier = Modifier.padding(top = 5.dp),
                         color = Color.White,
                         fontSize = 45.sp, fontStyle = FontStyle.Italic
@@ -128,7 +129,7 @@ fun profile(navController: NavController, mainViewModel: MainViewModel = viewMod
                         fontSize = 16.sp, fontStyle = FontStyle.Italic
                     )
                     Text(
-                        text = "Favourite Book",
+                        text = stringResource(id = R.string.profile_favorite_book),
                         modifier = Modifier.padding(top = 5.dp),
                         color = Color.White,
                         fontSize = 45.sp, fontStyle = FontStyle.Italic
